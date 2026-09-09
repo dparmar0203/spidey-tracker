@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spidey Tracker
 
-## Getting Started
+A dashboard for an 18-month, city-wide "tracker app" dataset of reported sightings of a masked
+vigilante swinging across a New York-inspired city — built with Next.js and backed by a live
+Supabase database.
 
-First, run the development server:
+**Live:** https://spidey-tracker-liard.vercel.app
+
+> A second, differently-styled front end for this same dataset lives at
+> [spidey-tracker-hud](https://github.com/dparmar0203/spidey-tracker-hud) — a Spider-Man
+> game/movie-inspired HUD instead of a conventional dashboard. Both apps read from the same
+> Supabase project.
+
+## What's here
+
+- **Overview (`/`)** — headline stats (total sightings, verified rate, hottest borough, swinging
+  reports) and quick links into the rest of the app.
+- **Boroughs (`/boroughs`)** — five borough cards; click one to drill into its recent field
+  reports, paginated.
+- **Reports (`/reports`)** — the full sightings feed, filterable by borough, report type, and
+  verification status, with evidence icons (photo/video/audio, crime-nearby flag).
+- **Trends (`/trends`)** — charts built from live aggregate queries: monthly sighting volume
+  (total vs. verified), report type breakdown, verification outcome breakdown, weather at time of
+  report.
+- **Web Map (`/map`)** — a "spider-sense radar" scatter plot of real sightings by latitude/longitude,
+  colored by borough, with a borough filter and click-to-inspect detail panel.
+
+## Data
+
+The dataset spans **January 2025 – June 2026** (~86,600 sightings) across the five NYC boroughs,
+with fields for report type, witness/source counts, tracker confidence, evidence flags, weather,
+and a labeled verification outcome (`verified`, `mistaken_identity`, `impersonator`,
+`social_media_hoax`, `duplicate_report`, `sensor_error`, `deliberate_fake`). It's served from a
+Supabase Postgres table (`sightings`) via the queries in `app/actions.ts`. The dataset is
+historical/static, not live — copy that implies real-time activity (e.g. "last ping") should be
+read as "most recent logged record," not "happening right now."
+
+## Tech stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4** with **shadcn/ui** (`base-nova` preset) for Card, Table, Badge, Select,
+  Button, Chart, Skeleton, Tabs
+- **Recharts** (via shadcn's chart wrapper) for the Trends page
+- **Supabase** (`@supabase/supabase-js`) as the data source
+- **lucide-react** for icons
+- Deployed on **Vercel**
+
+## Getting started
+
+```bash
+npm install
+```
+
+Create `.env.local` with your Supabase credentials:
+
+```bash
+SUPABASE_URL=your-supabase-project-url
+SUPABASE_ANON_KEY=your-supabase-anon-key
+```
+
+Then run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project is linked to a Vercel project (GitHub-connected: pushing to `main` triggers a
+production deploy). `SUPABASE_URL` and `SUPABASE_ANON_KEY` must also be set in the Vercel
+project's Environment Variables (Production, Preview, and Development) — see
+`vercel env add <NAME> <environment>`.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+vercel --prod
+```
