@@ -1,4 +1,10 @@
-export default function Home() {
+import { supabase } from "@/lib/supabase";
+
+export default async function Home() {
+  const { count } = await supabase
+    .from("sightings")
+    .select("*", { count: "exact", head: true });
+
   return (
     <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 text-center">
       <h1 className="text-5xl font-bold mb-4">Spidey Tracker</h1>
@@ -6,7 +12,9 @@ export default function Home() {
         For 18 months, a city-wide tracker app has been logging reports of a
         masked vigilante swinging across a New York-inspired city.
       </p>
-      <p className="text-2xl font-mono mt-8">86,631 sightings logged.</p>
+      <p className="text-2xl font-mono mt-8">
+        {count?.toLocaleString()} sightings logged.
+      </p>
     </main>
   );
 }

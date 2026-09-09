@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "name": "locations.csv",
+      "row_count": 46,
+      "column_count": 11,
+      "sha256": "b3d4468fe143e3fc8269d83324a973fca917f3d0f4185f59fca81f5c30d023f4",
+      "size_bytes": 4871
+    },
+    {
+      "name": "crime_incidents.csv",
+      "row_count": 46000,
+      "column_count": 18,
+      "sha256": "9a212e1f5c703cc7974b4b67deb83cbbb8ec217aa32bceac5d368714b371829a",
+      "size_bytes": 7524157
+    },
+    {
+      "name": "weather.csv",
+      "row_count": 13104,
+      "column_count": 9,
+      "sha256": "f8ad91caa76c6801ed6c94636a0ddd2d7aa175dcac9b1016de0ea9eae5b76817",
+      "size_bytes": 773911
+    },
+    {
+      "name": "witnesses_public.csv",
+      "row_count": 27000,
+      "column_count": 6,
+      "sha256": "197eeab4d31989b58ec64de8d3483c93146608e0779a5e77b3355d93ede1c8cb",
+      "size_bytes": 1223915
+    },
+    {
+      "name": "sightings.csv",
+      "row_count": 86631,
+      "column_count": 33,
+      "sha256": "e70b38283825ce5fc3ba7ffe3841f95f73685bbc347b35bfd8863d5953cd684f",
+      "size_bytes": 21469643
+    },
+    {
+      "name": "forecast_sequences.csv",
+      "row_count": 54606,
+      "column_count": 20,
+      "sha256": "f6521aad3e26956a4bec2e2f0f4447b3cce8c30a78550c25538e091f2bdc2297",
+      "size_bytes": 10409970
+    }
+  ]
+}

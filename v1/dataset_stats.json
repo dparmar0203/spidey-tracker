@@ -1,0 +1,26 @@
+{
+  "n_sightings_total": 86631,
+  "n_sightings_train_split": 69304,
+  "n_sightings_test_split": 17327,
+  "verified_ratio": 0.6303863513061144,
+  "verification_status_counts": {
+    "verified": 54611,
+    "mistaken_identity": 10743,
+    "impersonator": 8066,
+    "duplicate_report": 4802,
+    "social_media_hoax": 4491,
+    "deliberate_fake": 3291,
+    "sensor_error": 627
+  },
+  "n_crimes": 46000,
+  "n_witnesses": 27000,
+  "mean_witness_count": 4.112257736837853,
+  "median_report_delay_s": 327.0,
+  "borough_distribution": {
+    "Manhattan": 0.277,
+    "Brooklyn": 0.267,
+    "Queens": 0.221,
+    "Bronx": 0.161,
+    "Staten_Island": 0.073
+  }
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "category": "schema",
+    "check": "sighting_id unique",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "schema",
+    "check": "crime_id unique",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "schema",
+    "check": "zone_id unique",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "schema",
+    "check": "witness_id unique",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "schema",
+    "check": "split column only contains train/test",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "schema",
+    "check": "forecast split column only contains train/test",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "witness_count >= 0",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "tracker_confidence in [0,1]",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "photo_quality null iff no photo evidence",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "latitude valid range",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "longitude valid range",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "logical",
+    "check": "crime severity_score in configured range",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "spatial",
+    "check": "all public sighting coordinates inside their borough polygon",
+    "passed": true,
+    "detail": "0 outside"
+  },
+  {
+    "category": "foreign_key",
+    "check": "nearest_crime_id references an existing crime",
+    "passed": true,
+    "detail": "0 broken refs"
+  },
+  {
+    "category": "temporal",
+    "check": "sighting timestamps within configured date range",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "leakage",
+    "check": "no single feature makes the label redundant",
+    "passed": true,
+    "detail": "max AUC = 0.688"
+  },
+  {
+    "category": "leakage",
+    "check": "forecast test targets are strictly after train targets",
+    "passed": true,
+    "detail": ""
+  },
+  {
+    "category": "distribution",
+    "check": "verified ratio in [0.5,0.75]",
+    "passed": true,
+    "detail": "ratio=0.630"
+  },
+  {
+    "category": "distribution",
+    "check": "verified ratio consistent between train/test split",
+    "passed": true,
+    "detail": "train=0.630 test=0.630"
+  }
+]
