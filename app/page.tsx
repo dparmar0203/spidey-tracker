@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   const { count } = await supabase
@@ -15,6 +16,7 @@ export default async function Home() {
       <p className="text-2xl font-mono mt-8">
         {count?.toLocaleString()} sightings logged.
       </p>
+      <Button className="mt-8">Begin the Investigation</Button>
     </main>
   );
 }
